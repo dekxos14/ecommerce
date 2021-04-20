@@ -10,6 +10,14 @@
         "slim/slim": "3.*",
         "twig/twig": "^3.0",
         "phpmailer/phpmailer": "^6.4",
-        "squizlabs/php_codesniffer": "*"
-    }
+        "squizlabs/php_codesniffer": "*",
+        "ext-pdo": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        }
+    },
+    "description": ""
 }
