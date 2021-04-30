@@ -5,6 +5,7 @@ $app->get('/', 'HomeController:index')->setName('home');
 $app->group('/admin', function ($app) {
     $app->get('/main', 'PageAdminController:index')->setName('admin.main');
     $app->get('/users', 'PageAdminController:users')->setName('admin.users');
+    $app->map(['GET', 'POST'], '/create', 'PageAdminController:create')->setName('admin.create');
 });
 
 $app->group('/auth', function ($app) {

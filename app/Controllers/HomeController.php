@@ -6,6 +6,6 @@ class HomeController extends Controller
 {
     public function index($request, $response)
     {
-        return $this->container->view->render($response, 'site/main.twig');
+        return $this->container->view->render($response, 'site/home.twig');
     }
 }

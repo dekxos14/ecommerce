@@ -9,13 +9,16 @@ class Person extends Model
     protected $table = 'tb_persons';
     protected $primaryKey = 'idperson';
 
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'updated_date';
+    public $timestamps = false;
 
     protected $fillable = [
         'desperson',
         'desemail',
         'nrphone',
-        'dtregister'
     ];
+
+    /*public function user()
+    {
+        return $this->belongsTo(User::class, 'idperson','iduser');
+    }*/
 }

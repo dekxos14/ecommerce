@@ -14,7 +14,7 @@ class Validator
             try {
                 $rule->setName(ucfirst($field))->assert($request->getParam($field));
             } catch (NestedValidationException $e) {
-                $errors = $e->findMessages([
+                $errors = $e->getMessages([
                     'notEmpty' => 'Esse campo não pode está vazio',
                     'email' => 'Insira um email válido',
                     'length' => 'O nome tem que ter mais de 10 caracteres'

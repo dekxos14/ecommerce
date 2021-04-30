@@ -9,14 +9,16 @@ class User extends Model
     protected $table = 'tb_users';
     protected $primaryKey = 'iduser';
 
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'updated_date';
+    public $timestamps = false;
 
     protected $fillable = [
-        'idperson',
         'deslogin',
         'despassword',
-        'inadmin',
-        'dtregister'
+        'inadmin'
     ];
+
+    /*public function person()
+    {
+        return $this->hasOne(Person::class, 'idperson','iduser');
+    }*/
 }

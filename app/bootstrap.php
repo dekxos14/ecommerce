@@ -56,9 +56,9 @@ $c['errorHandler'] = function ($c) {
     };
 };*/
 
-/*$container['validator'] = function($container) {
+$container['validator'] = function($container) {
     return new App\Validation\Validator;
-};*/
+};
 
 $container['flash'] = function($container) {
     return new Slim\Flash\Messages;
