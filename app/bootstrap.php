@@ -39,7 +39,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 
-/*$c = $app->getContainer();
+$c = $app->getContainer();
 $c['errorHandler'] = function ($c) {
     return function ($request, $response, $exception) use ($c) {
         $data = [
@@ -54,7 +54,7 @@ $c['errorHandler'] = function ($c) {
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($data));
     };
-};*/
+};
 
 $container['validator'] = function($container) {
     return new App\Validation\Validator;

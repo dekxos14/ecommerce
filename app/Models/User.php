@@ -12,13 +12,14 @@ class User extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'idperson',
         'deslogin',
         'despassword',
         'inadmin'
     ];
 
-    /*public function person()
+    public function person()
     {
-        return $this->hasOne(Person::class, 'idperson','iduser');
-    }*/
+        return $this->belongsTo(Person::class, 'idperson', 'idperson');
+    }
 }

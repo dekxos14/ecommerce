@@ -37,20 +37,20 @@ class PageAdminController extends Controller
         ]);
 
         if($validation->failed())
-            echo 'Error'; //$response->withRedirect($this->container->router->pathFor('admin.create'));
+            $response->withRedirect($this->container->router->pathFor('admin.create'));
 
-
-        User::create([
-            'deslogin' => $request->getParam('deslogin'),
-            'despassword' => password_hash($request->getParam('despassword'), PASSWORD_DEFAULT),
-            'inadmin' => $request->getParam('inadmin')
-        ]);
 
         Person::create([
             'desperson' => $request->getParam('desperson'),
             'desemail' => $request->getParam('desemail'),
             'nrphone' => $request->getParam('nrphone')
-        ]);
+        ])
+            ->user()
+            ->create([
+                'deslogin' => $request->getParam('deslogin'),
+                'despassword' => password_hash($request->getParam('despassword'), PASSWORD_DEFAULT),
+                'inadmin' => $request->getParam('inadmin')
+            ]);
 
         return $response->withRedirect($this->container->router->pathFor('auth.login'));
     }

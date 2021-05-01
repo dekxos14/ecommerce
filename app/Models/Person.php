@@ -9,16 +9,16 @@ class Person extends Model
     protected $table = 'tb_persons';
     protected $primaryKey = 'idperson';
 
-    public $timestamps = false;
-
     protected $fillable = [
         'desperson',
         'desemail',
-        'nrphone',
+        'nrphone'
     ];
 
-    /*public function user()
+    public $timestamps = false;
+
+    public function user()
     {
-        return $this->belongsTo(User::class, 'idperson','iduser');
-    }*/
+        return $this->hasOne(User::class, 'idperson', 'idperson');
+    }
 }
