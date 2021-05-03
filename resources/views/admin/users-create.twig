@@ -31,28 +31,43 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="desperson">Nome</label>
-                                    <input type="text" class="form-control" id="desperson" name="desperson"
+                                    <input type="text" class="form-control {{ errors.desperson ? 'is-danger' : '' }}" id="desperson" name="desperson"
                                            placeholder="Digite o Nome">
+                                    {% if errors.desperson %}
+                                        <small class="has-text-danger">{{ errors.desperson | first }}</small>
+                                    {% endif %}
                                 </div>
                                 <div class="form-group">
                                     <label for="deslogin">Login</label>
-                                    <input type="text" class="form-control" id="deslogin" name="deslogin"
+                                    <input type="text" class="form-control {{ errors.deslogin ? 'is-danger' : '' }}" id="deslogin" name="deslogin"
                                            placeholder="Digite o Login">
+                                    {% if errors.deslogin %}
+                                        <small class="has-text-danger">{{ errors.deslogin | first }}</small>
+                                    {% endif %}
                                 </div>
                                 <div class="form-group">
                                     <label for="nrphone">Telefone</label>
-                                    <input type="tel" class="form-control" id="nrphone" name="nrphone"
+                                    <input type="tel" class="form-control {{ errors.nrphone ? 'is-danger' : '' }}" id="nrphone" name="nrphone"
                                            placeholder="Digite o Telefone">
+                                    {% if errors.nrphone %}
+                                        <small class="has-text-danger">{{ errors.nrphone | first }}</small>
+                                    {% endif %}
                                 </div>
                                 <div class="form-group">
                                     <label for="desemail">E-mail</label>
-                                    <input type="email" class="form-control" id="desemail" name="desemail"
+                                    <input type="email" class="form-control {{ errors.desemail ? 'is-danger' : '' }}" id="desemail" name="desemail"
                                            placeholder="Digite o E-mail">
+                                    {% if errors.desemail %}
+                                        <small class="has-text-danger">{{ errors.desemail | first }}</small>
+                                    {% endif %}
                                 </div>
                                 <div class="form-group">
                                     <label for="despassword">Senha</label>
-                                    <input type="password" class="form-control" id="despassword" name="despassword"
+                                    <input type="password" class="form-control {{ errors.despassword ? 'is-danger' : '' }}" id="despassword" name="despassword"
                                            placeholder="**********">
+                                    {% if errors.despassword %}
+                                        <small class="has-text-danger">{{ errors.despassword | first }}</small>
+                                    {% endif %}
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -66,7 +81,7 @@
                             </div>
                         </form>
                     </div>
-
+                    {% include "components/notifications.twig" %}
                 </div>
 
             </div>
@@ -75,7 +90,7 @@
 
         <!-- /.content -->
     </div>
-    {% include "components/notifications.twig" %}
+
     <!-- /.content-wrapper -->
 
 {% endblock %}

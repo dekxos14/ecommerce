@@ -13,4 +13,5 @@ return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
     '253c157292f75eb38082b5acb06f3f01' => $vendorDir . '/nikic/fast-route/src/functions.php',
     '2df68f9e79c919e2d88506611769ed2e' => $vendorDir . '/respect/stringifier/src/stringify.php',
+    '0fcb3ce8ae573c2bbd4e2847bd00ea6e' => $baseDir . '/app/Functions/helpers.php',
 );

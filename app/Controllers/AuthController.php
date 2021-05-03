@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\Person;
 use App\Auth;
 use Respect\Validation\Validator as v;
 
@@ -20,6 +20,34 @@ class AuthController extends Controller
             return $response->withRedirect($this->container->router->pathFor('auth.login'));
         }
 
-        return $response->withRedirect($this->container->router->pathFor('admin'));
+        return $response->withRedirect($this->container->router->pathFor('admin.users'));
+    }
+
+    public function forgot($request, $response)
+    {
+        if($request->isGet())
+            return $this->container->view->render($response, 'admin/forgot-password.twig');
+
+        $email = $request->getParam('desemail');
+
+        $person = Person::where('desemail', $email)->first();
+//        json($person);
+        if (count($person) === 0) {
+            echo 'Email não encontrado';
+        } else {
+
+            /**
+             * A chave tem que ser igual ao que esta no model Mail: $mail->addAddress($to['email'], $to['name']);
+             */
+            $payload = [
+                'name' => $person->desperson,
+                'email' => $person->desemail
+
+            ];
+
+            $this->container->mail->send($payload, 'forgot.twig', 'Recover Password', $payload);
+        }
+
+        return $response->withRedirect($this->container->router->pathFor('auth.login'));
     }
 }

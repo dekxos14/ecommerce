@@ -1,3 +1,7 @@
+{% extends "layouts/base_admin.twig" %}
+
+{% block content_admin %}
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
@@ -18,27 +22,27 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/users/{$user.iduser}" method="post">
+      <form action="/hcode-slim-3/public/admin/edit/{{person.idperson}}" method="post"> {#  {{ path_for('admin.edit', { 'id': person.idperson }) }}#}
           <div class="box-body">
             <div class="form-group">
               <label for="desperson">Nome</label>
-              <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" value="{$user.desperson}">
+              <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" value="{{ person.desperson }}">
             </div>
             <div class="form-group">
               <label for="deslogin">Login</label>
-              <input type="text" class="form-control" id="deslogin" name="deslogin" placeholder="Digite o login"  value="{$user.deslogin}">
+              <input type="text" class="form-control" id="deslogin" name="deslogin" placeholder="Digite o login"  value="{{ person.user.deslogin }}">
             </div>
             <div class="form-group">
               <label for="nrphone">Telefone</label>
-              <input type="tel" class="form-control" id="nrphone" name="nrphone" placeholder="Digite o telefone"  value="{$user.nrphone}">
+              <input type="tel" class="form-control" id="nrphone" name="nrphone" placeholder="Digite o telefone"  value="{{ person.nrphone }}">
             </div>
             <div class="form-group">
               <label for="desemail">E-mail</label>
-              <input type="email" class="form-control" id="desemail" name="desemail" placeholder="Digite o e-mail" value="{$user.desemail}">
+              <input type="email" class="form-control" id="desemail" name="desemail" placeholder="Digite o e-mail" value="{{ person.desemail }}">
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="inadmin" value="1" {if="$user.inadmin == 1"}checked{/if}> Acesso de Administrador
+                <input type="checkbox" name="inadmin" value="1" {% if person.user.inadmin == 1 %}checked{% endif %}> Acesso de Administrador
               </label>
             </div>
           </div>
@@ -50,8 +54,9 @@
       </div>
   	</div>
   </div>
-
 </section>
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+{% endblock %}

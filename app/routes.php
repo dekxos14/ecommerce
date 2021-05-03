@@ -6,10 +6,16 @@ $app->group('/admin', function ($app) {
     $app->get('/main', 'PageAdminController:index')->setName('admin.main');
     $app->get('/users', 'PageAdminController:users')->setName('admin.users');
     $app->map(['GET', 'POST'], '/create', 'PageAdminController:create')->setName('admin.create');
+    $app->get('/edit/{id}', 'PageAdminController:edit')->setName('admin.edit');
+    $app->post('/edit/{id}', 'PageAdminController:update');
+    $app->get('/delete', 'PageAdminController:delete');
+
 });
+
 
 $app->group('/auth', function ($app) {
     $app->map(['GET', 'POST'],'/login', 'AuthController:login')->setName('auth.login');
+    $app->map(['GET', 'POST'], '/forgot', 'AuthController:forgot')->setName('auth.forgot');
 });
 
 

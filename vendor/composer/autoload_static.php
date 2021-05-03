@@ -14,6 +14,7 @@ class ComposerStaticInit453fe1078676b06406a8a2771c3ef58f
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '2df68f9e79c919e2d88506611769ed2e' => __DIR__ . '/..' . '/respect/stringifier/src/stringify.php',
+        '0fcb3ce8ae573c2bbd4e2847bd00ea6e' => __DIR__ . '/../..' . '/app/Functions/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -218,12 +219,11 @@ class ComposerStaticInit453fe1078676b06406a8a2771c3ef58f
         'App\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/AuthController.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
-        'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Controllers/LoginController.php',
         'App\\Controllers\\PageAdminController' => __DIR__ . '/../..' . '/app/Controllers/PageAdminController.php',
         'App\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Middleware/AuthMiddleware.php',
         'App\\Middleware\\DisplayInputErrorsMiddleware' => __DIR__ . '/../..' . '/app/Middleware/DisplayInputErrorsMiddleware.php',
         'App\\Middleware\\Middleware' => __DIR__ . '/../..' . '/app/Middleware/Middleware.php',
-        'App\\Models\\Load' => __DIR__ . '/../..' . '/app/Models/Load.php',
+        'App\\Models\\Person' => __DIR__ . '/../..' . '/app/Models/Person.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Validation\\Validator' => __DIR__ . '/../..' . '/app/Validation/Validator.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
