@@ -39,7 +39,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 
-/*$c = $app->getContainer();
+$c = $app->getContainer();
 $c['errorHandler'] = function ($c) {
     return function ($request, $response, $exception) use ($c) {
         $data = [
@@ -54,7 +54,9 @@ $c['errorHandler'] = function ($c) {
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($data));
     };
-};*/
+};
+
+$container['upload_directory'] = "C:/xampp/htdocs/hcode-slim-3/public/images/upload";
 
 $container['validator'] = function($container) {
     return new App\Validation\Validator;
@@ -101,6 +103,10 @@ $container['PageAdminController'] = function($container) {
     return new App\Controllers\PageAdminController($container);
 };
 
+$container['ProductController'] = function($container) {
+    return new App\Controllers\ProductController($container);
+};
+
 $container['AuthController'] = function($container) {
     return new App\Controllers\AuthController($container);
 };
@@ -110,7 +116,8 @@ require __DIR__ . '/commons.php';
 getControllers($container, [
     'HomeController',
     'AuthController',
-    'PageAdminController']);
+    'PageAdminController',
+    'ProductController']);
 
 $app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
 

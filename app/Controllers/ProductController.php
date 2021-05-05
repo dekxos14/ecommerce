@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\Product;
+
+use Respect\Validation\Validator as v;
+
+class ProductController extends Controller
+{
+    public function getProducts($request, $response)
+    {
+        $products = Product::all();
+
+        $data = [
+            'products' => $products,
+        ];
+
+        return $this->container->view->render($response, 'admin/products.twig', $data);
+    }
+
+
+    public function createProduct($request, $response)
+    {
+        if($request->isGet())
+            return $this->container->view->render($response, 'admin/products-create.twig');
+
+        $validation = $this->container->validator->validate($request,[
+            'desproduct' =>  v::notEmpty()->alpha()->length(5),
+        ]);
+
+        if($validation->failed())
+            $response->withRedirect($this->container->router->pathFor('admin.product-create'));
+
+        Product::create([
+            'desproduct' => $request->getParam('desproduct'),
+            'vlprice' => $request->getParam('vlprice'),
+            'vlwidth' => $request->getParam('vlwidth'),
+            'vlheight' => $request->getParam('vlheight'),
+            'vllength' => $request->getParam('vllength'),
+            'vlweight' => $request->getParam('vlweight'),
+        ]);
+
+        $uploadedFiles = $request->getUploadedFiles();
+        $uploadedFile = $uploadedFiles['desphoto'];
+        if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
+            $filename =  $uploadedFiles->getClientFilename();
+            $uploadedFile->moveTo(__DIR__ . '/public/images' . DIRECTORY_SEPARATOR . $filename);
+        }
+
+        return $response->withRedirect($this->container->router->pathFor('admin.products'));
+    }
+
+
+    public function updateProduct($request, $response, $args)
+    {
+       $product = Product::where('idproduct', '=', $args['id'])->first();
+
+       $data = [
+            'product' => $product
+       ];
+
+       if($request->isGet())
+           return $this->container->view->render($response, 'admin/products-update.twig', $data);
+
+
+
+       $directory = $this->container->get('upload_directory');
+
+       $files = $request->getUploadedFiles();
+       $newFile = $files['desphoto'];
+
+        if ($newFile->getError() === UPLOAD_ERR_OK) {
+            $extension = pathinfo($newFile->getClientFilename(), PATHINFO_EXTENSION);
+            $uploadedFileName =  $product->desproduct;
+
+            $upload = sprintf('%s.%0.8s', $uploadedFileName, $extension);;
+
+            $newFile->moveTo($directory . DIRECTORY_SEPARATOR . $upload);
+        }
+
+
+        $validation = $this->container->validator->validate($request,[
+            'desproduct' =>  v::notEmpty()->alpha()->length(5),
+        ]);
+
+        if($validation->failed())
+            $response->withRedirect($this->container->router->pathFor('admin.product-create'));
+
+       $product->update([
+            'desproduct' => $request->getParam('desproduct'),
+            'vlprice' => $request->getParam('vlprice'),
+            'vlwidth' => $request->getParam('vlwidth'),
+            'vlheight' => $request->getParam('vlheight'),
+            'vllength' => $request->getParam('vllength'),
+            'vlweight' => $request->getParam('vlweight')
+       ]);
+
+       $this->container->flash->addMessage('success', 'Usuário atualizado com sucesso!');
+
+       return $response->withRedirect($this->container->router->pathFor('admin.products'));
+    }
+}

@@ -4,99 +4,12 @@
 
 {% block content_site %}
 
-<div class="header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="user-menu">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> Minha Conta</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Meu Carrinho</a></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="header-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">moeda :</span><span class="value">BRL </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">BRL</a></li>
-                                <li><a href="#">USD</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">linguagem :</span><span class="value">Português </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Português</a></li>
-                                <li><a href="#">Inglês</a></li>
-                                <li><a href="#">Espanhol</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End header area -->
-
-<div class="site-branding-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="logo">
-                    <h1><a href="#"><img src="../public/images/logo.png" alt></a></h1>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="shopping-item">
-                    <a href="carrinho.html">Carrinho - <span class="cart-amunt">R$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End site branding area -->
-
-<nav class="navbar navbar-expand-lg is-light is-expanded">
-    <button class="navbar-burger" role="button" type="button" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="menu">
-        <span aria-hidden="false"></span>
-    </button>
-
-    <div class="navbar-menu" id="navbarSupportedContent">
-        <ul class="navbar-start mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Produtos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Carrinho</a>
-            </li>
-        </ul>
-        <div class="field has-addons">
-            <div class="control">
-                <input class="input" type="text" placeholder="Search">
-            </div>
-            <div class="control">
-                <a class="button is-info"> Search</a>
-            </div>
-        </div>
-    </div>
-</nav>
-<!-- End mainmenu area -->
-
 <div class="slider-area">
     <!-- Slider -->
     <div class="block-slider block-slider4">
         <ul class="bxslider-home4" id="">
             <li>
-                <img src="../public/images/h4-slide.png" alt="Slide">
+                <img src="{{ base_url() }}/images/h4-slide.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
                         iPhone <span class="primary">6 <strong>Plus</strong></span>
@@ -105,7 +18,7 @@
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
-            <li><img src="../public/images/h4-slide2.png" alt="Slide">
+            <li><img src="{{ base_url() }}/images/h4-slide2.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
                         by one, get one <span class="primary">50% <strong>off</strong></span>
@@ -116,7 +29,7 @@
                     </div>
                 </div>
             </li>
-            <li><img src="../public/images/h4-slide3.png" alt="Slide">
+            <li><img src="{{ base_url() }}/images/h4-slide3.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
                         Apple <span class="primary">Store <strong>Ipod</strong></span>
@@ -125,7 +38,7 @@
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
-            <li><img src="../public/images/h4-slide4.png" alt="Slide">
+            <li><img src="{{ base_url() }}/images/h4-slide4.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
                         Apple <span class="primary">Store <strong>Ipod</strong></span>
@@ -182,7 +95,7 @@
                         <div class="single-product item-1">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-1.jpg" alt="">
+                                    <img src="{{ base_url() }}/images/product-1.jpg" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -198,7 +111,7 @@
                         <div class="single-product item-2">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-2.jpg" alt="">
+                                    <img src="{{ base_url() }}/images/product-2.jpg" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -214,7 +127,7 @@
                         <div class="single-product item-3">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-3.jpg" alt="">
+                                    <img src="{{ base_url() }}/images/product-3.jpg" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -230,7 +143,7 @@
                         <div class="single-product item-4">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-4.jpg" alt="">
+                                    <img src="{{ base_url() }}/images/product-4.jpg" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -246,7 +159,7 @@
                         <div class="single-product item-5">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-5.jpg" alt="">
+                                    <img src="{{ base_url() }}/images/product-5.jpg" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -262,7 +175,7 @@
                         <div class="single-product item-6">
                             <div class="product-f-image">
                                 <figure class="image is-195x247">
-                                    <img src="../public/images/product-6.png" alt="">
+                                    <img src="{{ base_url() }}/images/product-6.png" alt="">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
@@ -287,28 +200,28 @@
 
             <div class="columns is-multiline">
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand1.png" alt="">
+                    <img src="{{ base_url() }}/images/brand1.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand3.png" alt="">
+                    <img src="{{ base_url() }}/images/brand3.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand2.png" alt="">
+                    <img src="{{ base_url() }}/images/brand2.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand4.png" alt="">
+                    <img src="{{ base_url() }}/images/brand4.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand5.png" alt="">
+                    <img src="{{ base_url() }}/images/brand5.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand6.png" alt="">
+                    <img src="{{ base_url() }}/images/brand6.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand1.png" alt="">
+                    <img src="{{ base_url() }}/images/brand1.png" alt="">
                 </div>
                 <div class="column is-one-quarter">
-                    <img src="../public/images/brand2.png" alt="">
+                    <img src="{{ base_url() }}/images/brand2.png" alt="">
                 </div>
             </div>
     </div>
