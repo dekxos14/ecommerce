@@ -17,7 +17,8 @@ class Product extends Model
         'vllength',
         'vlweight',
         'desurl',
-        'dtregister'
+        'dtregister',
+        'desimage'
     ];
 
     public $timestamps = false;
