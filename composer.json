@@ -7,13 +7,17 @@
         "squizlabs/php_codesniffer": "*",
         "ext-pdo": "*",
         "ext-json": "*",
-		"symfony/twig-bridge": "^5.2",
 		"tuupola/slim-basic-auth": "^3.3",
 		"tuupola/slim-jwt-auth": "^3.5",
 		"slim/twig-view": "^2.5",
 		"illuminate/database": "~5.8.18",
 		"respect/validation": "^2.2",
-		"slim/flash": "^0.4.0"
+		"slim/flash": "^0.4.0",
+        "symfony/twig-bridge": "^5.2",
+		"symfony/framework-bundle": "^5.2",
+		"symfony/twig-bundle": "^5.2",
+		"twig/intl-extra": "^3.3",
+		"symfony/asset": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -23,5 +27,11 @@
           "app/Functions/helpers.php"
         ]
     },
-    "description": ""
+    "description": "",
+	"scripts": {
+		"auto-scripts": {
+			"cache:clear": "symfony-cmd",
+			"assets:install %PUBLIC_DIR%": "symfony-cmd"
+		}
+	}
 }

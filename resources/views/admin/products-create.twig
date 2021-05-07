@@ -53,15 +53,26 @@
               <label for="vlweight">Peso</label>
               <input type="number" class="form-control" id="vlweight" name="vlweight" step="0.01" placeholder="0.00">
             </div>
-            <div class="form-group">
-              <label for="desphoto">Foto</label>
-              <input type="file" class="form-control" id="desphoto" name="desphoto" value="">
-              <div class="box box-widget">
-                <div class="box-body">
-                  <img class="img-responsive" id="image-preview" alt="Photo">
-                </div>
-              </div>
+
+
+            <div class="container has-text-centered">
+              <p class="control uploader">
+                <a class="button button is-dark is-fullwidth is-medium">
+                                <span class="icon is-small">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                  <span>Upload image</span>
+                  <input type="file" accept="image/*" onchange="showMyImage(this)"
+                         id="desphoto" name="desphoto" value="{{ product.desphoto }}"
+                         class="button button is-dark chooseFile">
+                </a>
+              </p>
             </div>
+            <!-- Image preview -->
+            <div class="field has-text-centered">
+              <img id="thumbnail" src="">
+            </div>
+
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
@@ -77,4 +88,5 @@
 </div>
 <!-- /.content-wrapper -->
 
+{% include 'partials/admin/image-js.twig' %}
 {% endblock %}

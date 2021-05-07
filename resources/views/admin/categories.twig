@@ -26,8 +26,8 @@
               <a href="{{ path_for('admin.category-create') }}" class="btn btn-success">Cadastrar Categoria</a>
             </div>
 
-            <div class="box-body no-padding">
-              <table class="table table-striped">
+            <div class="card-body no-padding">
+              <table class="table-container is-striped">
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
@@ -39,8 +39,9 @@
                 {% for category in categories %}
                   <tr>
                     <td>{{ category.idcategory }}</td>
-                    <td>{{ category.descategory }}</td>
+                    <td style="width: 450px">{{ category.descategory }}</td>
                     <td>
+                      <a href="/hcode-slim-3/public/admin/categories/products/{{ category.idcategory }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Produtos</a>
                       <a href="/hcode-slim-3/public/admin/category/update/{{ category.idcategory }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/hcode-slim-3/public/admin/category/delete?id={{ category.idcategory }}" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>

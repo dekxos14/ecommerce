@@ -90,103 +90,30 @@
     <div class="content">
             <div class="column">
                 <div class="latest-product">
-                    <div class="is-flex is-justify-content-center"><h2 class="title is-size-2">Produtos</h2></div>
+                    <div class="is-flex is-justify-content-center">
+                        <h2 class="title is-size-2">Products</h2>
+                    </div>
                     <div class="carousel" id="bulma-carousel">
+
+                        {% for product in products %}
                         <div class="single-product item-1">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-1.jpg" alt="">
+                            <div class="product-f-image is-fullwidth">
+                                <figure class="image is-3by4">
+                                    <img src="{{ base_url()}}/images/{{ product.desimage }}.png" alt="product">
                                 </figure>
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
-                            <h2><a href="#">Samsung Galaxy s5- 2015</a></h2>
+                            <h2><a href="/hcode-slim-3/public/site/product_detail?id={{ product.idproduct }}">{{ product.desproduct }}</a></h2>
                             <div class="product-carousel-price">
-                                <ins>$700.00</ins>
+                                <ins>{{ product.vlprice | format_currency('BRL') }}</ins>  {# ISO 4217 #}
                             </div>
                         </div>
+                        {% endfor %}
 
-                        <div class="single-product item-2">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-2.jpg" alt="">
-                                </figure>
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            <h2>Nokia Lumia 1320</h2>
-                            <div class="product-carousel-price">
-                                <ins>$899.00</ins>
-                            </div>
-                        </div>
 
-                        <div class="single-product item-3">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-3.jpg" alt="">
-                                </figure>
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            <h2>LG Leon 2015</h2>
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>
-                        </div>
-
-                        <div class="single-product item-4">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-4.jpg" alt="">
-                                </figure>
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            <h2><a href="#">Sony microsoft</a></h2>
-                            <div class="product-carousel-price">
-                                <ins>$200.00</ins>
-                            </div>
-                        </div>
-
-                        <div class="single-product item-5">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-5.jpg" alt="">
-                                </figure>
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            <h2>iPhone 6</h2>
-                            <div class="product-carousel-price">
-                                <ins>$1200.00</ins>
-                            </div>
-
-                        </div>
-                        <div class="single-product item-6">
-                            <div class="product-f-image">
-                                <figure class="image is-195x247">
-                                    <img src="{{ base_url() }}/images/product-6.png" alt="">
-                                </figure>
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            <h2><a href="#">Samsung gallaxy note 4</a></h2>
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="/hcode-slim-3/public/admin/products/update/{{ product.idproduct }}"
+                        <form role="form" action="/hcode-slim-3/public/admin/product/update/{{ product.idproduct }}"
                               method="post" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
@@ -72,7 +72,7 @@
                                 </div>
                                 <!-- Image preview -->
                                 <div class="field has-text-centered">
-                                    <img id="thumbnail" src="{{ asset('images/upload/' ~ product.desimage) }}" alt="image-preview">
+                                    <img id="thumbnail" src="{{ base_url()}}/images/{{ product.desimage }}.png" alt="image-preview">
                                 </div>
 
 
@@ -93,7 +93,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-    {% include 'partials/admin/image-js.twig' %}
+{% include 'partials/admin/image-js.twig' %}
 
 {% endblock %}
 

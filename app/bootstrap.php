@@ -4,6 +4,7 @@ use Slim\Http\{
     Environment,
     Uri
 };
+use Twig\Extra\Intl\IntlExtension;
 
 session_start();
 
@@ -39,24 +40,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 
-$c = $app->getContainer();
-$c['errorHandler'] = function ($c) {
-    return function ($request, $response, $exception) use ($c) {
-        $data = [
-            'code' => $exception->getCode(),
-            'message' => $exception->getMessage(),
-            'file' => $exception->getFile(),
-            'line' => $exception->getLine(),
-            'trace' => explode("\n", $exception->getTraceAsString()),
-        ];
-
-        return $c->get('response')->withStatus(500)
-            ->withHeader('Content-Type', 'application/json')
-            ->write(json_encode($data));
-    };
-};
-
-$container['upload_directory'] = "C:/xampp/htdocs/hcode-slim-3/public/images/upload";
+$container['upload_directory'] = "C:/xampp/htdocs/hcode-slim-3/public/images";
 
 $container['validator'] = function($container) {
     return new App\Validation\Validator;
@@ -80,8 +64,10 @@ $container['view'] = function($container) {
     ]);
     $router = $container->get('router');
     $uri = Uri::createFromEnvironment(new Environment($_SERVER));
-    $view->addExtension(new Slim\Views\TwigExtension($router, $uri));
+    $twig = new IntlExtension();
 
+    $view->addExtension(new Slim\Views\TwigExtension($router, $uri));
+    $view->addExtension(new IntlExtension());
     $view->getEnvironment()->addGlobal('flash', $container->flash);
 
     $view->getEnvironment()->addGlobal('auth', [
@@ -90,6 +76,11 @@ $container['view'] = function($container) {
     ]);
 
     return $view;
+};
+
+
+$container['AuthController'] = function($container) {
+    return new App\Controllers\AuthController($container);
 };
 
 /**
@@ -107,9 +98,11 @@ $container['ProductController'] = function($container) {
     return new App\Controllers\ProductController($container);
 };
 
-$container['AuthController'] = function($container) {
-    return new App\Controllers\AuthController($container);
+$container['CategoryController'] = function($container) {
+    return new App\Controllers\CategoryController($container);
 };
+
+
 
 require __DIR__ . '/commons.php';
 
@@ -117,7 +110,8 @@ getControllers($container, [
     'HomeController',
     'AuthController',
     'PageAdminController',
-    'ProductController']);
+    'ProductController',
+    'CategoryController']);
 
 $app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
 

@@ -22,4 +22,9 @@ class Product extends Model
     ];
 
     public $timestamps = false;
+
+    public function category()
+    {
+        return $this->hasMany(ProductCategory::class, 'idproduct', 'idproduct');
+    }
 }

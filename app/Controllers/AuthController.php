@@ -23,6 +23,7 @@ class AuthController extends Controller
         return $response->withRedirect($this->container->router->pathFor('admin.users'));
     }
 
+
     public function forgot($request, $response)
     {
         if($request->isGet())
@@ -31,7 +32,7 @@ class AuthController extends Controller
         $email = $request->getParam('desemail');
 
         $person = Person::where('desemail', $email)->first();
-//        json($person);
+
         if (count($person) === 0) {
             echo 'Email não encontrado';
         } else {

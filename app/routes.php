@@ -2,7 +2,8 @@
 
 $app->group('/site', function ($app) {
     $app->get('/home', 'HomeController:home')->setName('site.home');
-    $app->get('/category', 'HomeController:getCategory')->setName('site.category.');
+    $app->get('/category', 'HomeController:getCategoryProducts')->setName('site.category');
+    $app->get('/product_detail', 'HomeController:getProductDetail')->setName('site.product-detail');
 });
 
 
@@ -13,20 +14,24 @@ $app->group('/admin', function ($app) {
     $app->map(['GET', 'POST'], '/create', 'PageAdminController:createUser')->setName('admin.user-create');
     $app->map(['GET', 'POST'], '/user/update/{id}', 'PageAdminController:updateUser')->setName('admin.user-update');
     $app->get('/user/delete', 'PageAdminController:deleteUser');
-
-    $app->get('/categories', 'PageAdminController:getCategories')->setName('admin.categories');
-    $app->map(['GET', 'POST'], '/category/create', 'PageAdminController:createCategory')->setName('admin.category-create');
-    $app->map(['GET', 'POST'], '/category/update/{id}', 'PageAdminController:updateCategory')->setName('admin.category-update');
-    $app->get('/category/delete', 'PageAdminController:deleteCategory');
+});
 
 
+$app->group('/admin', function ($app) {
+    $app->get('/categories', 'CategoryController:getCategories')->setName('admin.categories');
+    $app->map(['GET', 'POST'], '/category/create', 'CategoryController:createCategory')->setName('admin.category-create');
+    $app->map(['GET', 'POST'], '/category/update/{id}', 'CategoryController:updateCategory')->setName('admin.category-update');
+    $app->get('/category/delete', 'CategoryController:deleteCategory');
+
+    $app->get('/categories/products/{id}', 'CategoryController:getProductCategory')->setName('admin.categories-products');
 });
 
 
 $app->group('/admin', function ($app) {
     $app->get('/products', 'ProductController:getProducts')->setName('admin.products');
-    $app->map(['GET', 'POST'], '/products/create', 'ProductController:createProduct')->setName('admin.product-create');
-    $app->map(['GET', 'POST'], '/products/update/{id}', 'ProductController:updateProduct')->setName('admin.product-update');
+    $app->map(['GET', 'POST'], '/product/create', 'ProductController:createProduct')->setName('admin.product-create');
+    $app->map(['GET', 'POST'], '/product/update/{id}', 'ProductController:updateProduct')->setName('admin.product-update');
+    $app->get('/product/delete', 'ProductController:deleteProduct');
 
 });
 

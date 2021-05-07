@@ -25,6 +25,19 @@ class ProductController extends Controller
         if ($request->isGet())
             return $this->container->view->render($response, 'admin/products-create.twig');
 
+        $directory = $this->container->get('upload_directory');
+
+        $files = $request->getUploadedFiles();
+        $newFile = $files['desphoto'];
+
+
+        $extension = pathinfo($newFile->getClientFilename(), PATHINFO_EXTENSION);
+        $uploadedFileName = bin2hex(random_bytes(5));
+
+        $upload = sprintf('%s.%0.8s', $uploadedFileName, $extension);
+
+        $newFile->moveTo($directory . DIRECTORY_SEPARATOR . $upload);
+
         $validation = $this->container->validator->validate($request, [
             'desproduct' => v::notEmpty()->alpha()->length(5),
         ]);
@@ -39,6 +52,7 @@ class ProductController extends Controller
             'vlheight' => $request->getParam('vlheight'),
             'vllength' => $request->getParam('vllength'),
             'vlweight' => $request->getParam('vlweight'),
+            'desimage' => $uploadedFileName
         ]);
 
         $uploadedFiles = $request->getUploadedFiles();
@@ -52,6 +66,13 @@ class ProductController extends Controller
     }
 
 
+    /**
+     * @param $request
+     * @param $response
+     * @param $args
+     * @return mixed
+     * @throws \Exception
+     */
     public function updateProduct($request, $response, $args)
     {
         $product = Product::where('idproduct', '=', $args['id'])->first();
@@ -69,11 +90,12 @@ class ProductController extends Controller
         $files = $request->getUploadedFiles();
         $newFile = $files['desphoto'];
 
-
         $extension = pathinfo($newFile->getClientFilename(), PATHINFO_EXTENSION);
+
         $uploadedFileName = bin2hex(random_bytes(5));
 
-        $upload = sprintf('%s.%0.8s', $uploadedFileName, $extension);
+//        $upload = sprintf('%s', $uploadedFileName . '.' . $extension);
+        $upload =  "{$uploadedFileName}.{$extension}";
 
         $newFile->moveTo($directory . DIRECTORY_SEPARATOR . $upload);
 
@@ -96,6 +118,21 @@ class ProductController extends Controller
         ]);
 
         $this->container->flash->addMessage('success', 'Usuário atualizado com sucesso!');
+
+        return $response->withRedirect($this->container->router->pathFor('admin.products'));
+    }
+
+
+    public function deleteProduct($request, $response)
+    {
+        $product = Product::find($request->getParam('id'));
+
+        if ($product) {
+            $product->delete();
+            $this->container->flash->addMessage('success', 'Produto deletado');
+        } else {
+            $this->container->flash->addMessage('error', 'Produto não pode ser deletado');
+        }
 
         return $response->withRedirect($this->container->router->pathFor('admin.products'));
     }
